@@ -8,105 +8,61 @@
     
     
     <style>
-        :root {
-            /* Clean Minimalist Palette */
-            --bg-body: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --bg-card: #ffffff;
-            
-            --text-primary: #111827;
-            --text-secondary: #4b5563;
-            --text-muted: #6b7280;
-            
-            --brand-primary: #2563eb;
-            --brand-hover: #1d4ed8;
-            
-            --border-light: #e5e7eb;
-            --border-dark: #d1d5db;
-            
-            --font-main: 'Inter', system-ui, -apple-system, sans-serif;
-            
-            --radius-sm: 6px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
-        }
-
-        /* Strict CSS Box Model Rule */
-        *, *::before, *::after {
-            box-sizing: border-box;
+        .page {
             margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-primary);
-            font-family: var(--font-main);
+            background-color: #ffffff;
+            color: #111827;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Typography & Link Defaults */
-        h1, h2, h3, h4 {
-            color: var(--text-primary);
-            font-weight: 700;
-            line-height: 1.25;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
         }
 
         .navbar {
             position: sticky;
             top: 0;
-            z-index: 100;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid var(--border-light);
-            padding: 1.2rem 8%;
+            z-index: 10;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1.2rem 8%;
+            border-bottom: 1px solid #e5e7eb;
+            background-color: #ffffff;
         }
 
         .nav-brand {
+            color: #111827;
             font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.5px;
+            font-weight: bold;
+            text-decoration: none;
         }
 
         .nav-links {
             display: flex;
-            list-style: none;
             gap: 2rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
 
-        .nav-item a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            transition: color 0.2s ease;
+        .nav-link {
+            position: relative;
+            color: #4b5563;
+            text-decoration: none;
+            transition: color 180ms ease;
         }
 
-        .nav-item a:hover {
-            color: var(--brand-primary);
+        .nav-link:hover,
+        .nav-link:focus-visible {
+            color: #2563eb;
         }
 
         .hero {
-            padding: 5rem 8% 4rem 8%;
-            background-color: var(--bg-secondary);
-            border-bottom: 1px solid var(--border-light);
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
             gap: 3rem;
+            padding: 5rem 8% 4rem;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .hero-text {
@@ -115,89 +71,88 @@
 
         .badge {
             display: inline-block;
-            background-color: #eff6ff;
-            color: var(--brand-primary);
-            border: 1px solid #bfdbfe;
-            padding: 0.35rem 0.85rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
             margin-bottom: 1.25rem;
+            padding: 0.35rem 0.85rem;
+            border: 1px solid #bfdbfe;
+            background-color: #eff6ff;
+            color: #2563eb;
+            font-size: 0.85rem;
+            font-weight: bold;
         }
 
         .hero-title {
-            font-size: 2.75rem;
-            letter-spacing: -1px;
             margin-bottom: 1rem;
+            font-size: 2.75rem;
         }
 
         .hero-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
             margin-bottom: 2rem;
-            line-height: 1.6;
+            color: #4b5563;
+            font-size: 1.1rem;
         }
 
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
             align-items: center;
+            gap: 1rem;
         }
 
-        /* Clean Functional Buttons */
         .btn {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 0.5rem;
             padding: 0.7rem 1.4rem;
-            border-radius: var(--radius-sm);
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: background-color 0.2s ease, border-color 0.2s ease;
-            cursor: pointer;
+            border: 1px solid #d1d5db;
+            color: #111827;
+            text-decoration: none;
+            font-weight: bold;
         }
 
         .btn-primary {
-            background-color: var(--brand-primary);
+            border-color: #2563eb;
+            background-color: #2563eb;
             color: #ffffff;
-            border: 1px solid var(--brand-primary);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--brand-hover);
         }
 
         .btn-outline {
             background-color: #ffffff;
-            color: var(--text-primary);
-            border: 1px solid var(--border-dark);
         }
 
-        .btn-outline:hover {
-            background-color: var(--bg-secondary);
-            border-color: var(--text-primary);
-        }
-
-        .btn svg {
+        .icon {
             width: 18px;
             height: 18px;
             fill: currentColor;
         }
 
-        /* Profile Avatar Frame */
+        .icon-small {
+            width: 16px;
+            height: 16px;
+        }
+
+        .icon-email {
+            width: 22px;
+            height: 22px;
+            fill: #2563eb;
+        }
+
         .profile-image-container {
+            display: flex;
             flex-shrink: 0;
+            justify-content: center;
+            align-items: center;
             width: 220px;
             height: 220px;
-            border-radius: 50%;
-            border: 3px solid #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             overflow: hidden;
+            border: 3px solid #ffffff;
+            border-radius: 50%;
             background-color: #e5e7eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: transform 200ms ease, box-shadow 200ms ease;
+        }
+
+        .profile-image-container:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 24px rgb(17 24 39 / 18%);
         }
 
         .profile-img {
@@ -206,13 +161,9 @@
             object-fit: cover;
         }
 
-        section {
+        .section {
             padding: 4.5rem 8%;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        section:last-of-type {
-            border-bottom: none;
+            border-bottom: 1px solid #e5e7eb;
         }
 
         .section-header {
@@ -220,171 +171,152 @@
         }
 
         .section-title {
-            font-size: 1.85rem;
             margin-bottom: 0.5rem;
+            font-size: 1.85rem;
         }
 
         .section-subtitle {
-            color: var(--text-muted);
-            font-size: 1rem;
+            color: #6b7280;
         }
 
-        /* Education CSS Grid */
         .education-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.75rem;
         }
 
         .edu-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-md);
             padding: 2rem;
-            transition: border-color 0.2s ease;
-        }
-
-        .edu-card:hover {
-            border-color: var(--border-dark);
+            border: 1px solid #e5e7eb;
+            background-color: #ffffff;
         }
 
         .edu-institution {
-            font-size: 1.25rem;
             margin-bottom: 0.35rem;
+            font-size: 1.25rem;
         }
 
         .edu-degree {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--brand-primary);
             margin-bottom: 0.75rem;
+            color: #2563eb;
+            font-weight: bold;
         }
 
         .edu-details {
-            color: var(--text-secondary);
+            color: #4b5563;
             font-size: 0.95rem;
-            line-height: 1.5;
         }
 
-        /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
 
         .skill-card {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-md);
             padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+            background-color: #f8f9fa;
         }
 
         .skill-title {
-            font-size: 1.1rem;
             margin-bottom: 0.75rem;
+            font-size: 1.1rem;
         }
 
         .skill-list {
-            list-style: none;
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
 
         .skill-tag {
-            background-color: #ffffff;
-            border: 1px solid var(--border-light);
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            font-weight: 500;
             padding: 0.25rem 0.6rem;
-            border-radius: var(--radius-sm);
+            border: 1px solid #e5e7eb;
+            background-color: #ffffff;
+            color: #4b5563;
+            font-size: 0.85rem;
         }
 
-        /* Single Project Container */
         .project-single-container {
             max-width: 800px;
         }
 
         .project-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-lg);
-            padding: 2.25rem;
             display: flex;
             flex-direction: column;
             gap: 1.25rem;
+            padding: 2.25rem;
+            border: 1px solid #e5e7eb;
+            background-color: #ffffff;
         }
 
         .project-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 1rem;
             flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .project-title {
             font-size: 1.5rem;
         }
 
-        .project-desc {
-            color: var(--text-secondary);
+        .project-desc,
+        .contact-text {
+            color: #4b5563;
             font-size: 1.05rem;
-            line-height: 1.6;
         }
 
         .tech-tags {
             display: flex;
-            gap: 0.5rem;
             flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tech-tags {
+            margin-top: 0.5rem;
         }
 
         .tech-tag {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-light);
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-            font-weight: 600;
             padding: 0.3rem 0.75rem;
-            border-radius: var(--radius-sm);
+            border: 1px solid #e5e7eb;
+            background-color: #f8f9fa;
+            color: #4b5563;
+            font-size: 0.8rem;
+            font-weight: bold;
         }
 
-        /* Simplified Contact Section */
         .contact-container {
             max-width: 600px;
         }
 
         .contact-text {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
             margin-bottom: 1.5rem;
         }
 
         .email-box {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 0.75rem;
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-light);
             padding: 1rem 1.5rem;
-            border-radius: var(--radius-md);
+            border: 1px solid #e5e7eb;
+            background-color: #f8f9fa;
+            color: #111827;
             font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            transition: border-color 0.2s ease;
+            font-weight: bold;
+            text-decoration: none;
         }
 
-        .email-box:hover {
-            border-color: var(--brand-primary);
-        }
-
-        @media screen and (max-width: 868px) {
+        @media (max-width: 868px) {
             .hero {
                 flex-direction: column-reverse;
-                text-align: center;
                 padding-top: 3.5rem;
+                text-align: center;
             }
 
             .hero-actions {
@@ -395,9 +327,13 @@
                 width: 180px;
                 height: 180px;
             }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        @media screen and (max-width: 600px) {
+        @media (max-width: 600px) {
             .navbar {
                 flex-direction: column;
                 gap: 0.75rem;
@@ -405,11 +341,18 @@
             }
 
             .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
                 gap: 1.2rem;
             }
 
-            section {
+            .section {
                 padding: 3rem 5%;
+            }
+
+            .education-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
 
             .hero-title {
@@ -417,23 +360,23 @@
             }
 
             .btn {
-                width: 100%;
                 justify-content: center;
+                width: 100%;
             }
         }
     </style>
 </head>
-<body>
+<body class="page">
 
     <header class="navbar">
         <a href="#" class="nav-brand">Sagar G A</a>
         <nav>
             <ul class="nav-links">
-                <li class="nav-item"><a href="#about">About</a></li>
-                <li class="nav-item"><a href="#academics">Academics</a></li>
-                <li class="nav-item"><a href="#skills">Skills</a></li>
-                <li class="nav-item"><a href="#projects">Projects</a></li>
-                <li class="nav-item"><a href="#contact">Contact</a></li>
+                <li><a class="nav-link" href="#about">About</a></li>
+                <li><a class="nav-link" href="#academics">Academics</a></li>
+                <li><a class="nav-link" href="#skills">Skills</a></li>
+                <li><a class="nav-link" href="#projects">Projects</a></li>
+                <li><a class="nav-link" href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -448,19 +391,18 @@
             <div class="hero-actions">
                 <!-- Direct Email Action -->
                 <a href="mailto:sagarga.inbox@gmail.com" class="btn btn-primary">
-                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     Contact Me
                 </a>
 
                 <!-- GitHub Direct Link -->
                 <a href="https://github.com/sagar-354" target="_blank" rel="noopener" class="btn btn-outline">
-                    <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     GitHub
                 </a>
-
                 <!-- LinkedIn Direct Link -->
                 <a href="https://linkedin.com/in/sagar-g-a-abbb80410/" target="_blank" rel="noopener" class="btn btn-outline">
-                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     LinkedIn
                 </a>
             </div>
@@ -472,7 +414,7 @@
         </div>
     </section>
 
-    <section id="academics">
+    <section class="section" id="academics">
         <div class="section-header">
             <h2 class="section-title">Education & Academics</h2>
             <p class="section-subtitle">Academic institutions and degree programs</p>
@@ -497,7 +439,7 @@
         </div>
     </section>
 
-    <section id="skills">
+    <section class="section" id="skills">
         <div class="section-header">
             <h2 class="section-title">Skills & Interests</h2>
             <p class="section-subtitle">Core technical competencies and domains</p>
@@ -534,7 +476,7 @@
         </div>
     </section>
 
-    <section id="projects">
+    <section class="section" id="projects">
         <div class="section-header">
             <h2 class="section-title">Projects</h2>
             <p class="section-subtitle">Featured repository and software project</p>
@@ -545,14 +487,14 @@
                 <div class="project-header">
                     <div>
                         <h3 class="project-title">Encrypt Data</h3>
-                        <div class="tech-tags" style="margin-top: 0.5rem;">
+                        <div class="tech-tags project-tech-tags">
                             <span class="tech-tag">Data Security</span>
                             <span class="tech-tag">Encryption</span>
                             <span class="tech-tag">Algorithms</span>
                         </div>
                     </div>
                     <a href="https://github.com/sagar-354/Encrypt-project" target="_blank" rel="noopener" class="btn btn-outline">
-                        <svg viewBox="0 0 24 24" style="width:16px; height:16px; fill:currentColor;"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        <svg class="icon icon-small" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                         Repository
                     </a>
                 </div>
@@ -563,7 +505,7 @@
         </div>
     </section>
 
-    <section id="contact">
+    <section class="section" id="contact">
         <div class="section-header">
             <h2 class="section-title">Contact</h2>
             <p class="section-subtitle">Get in touch via email</p>
@@ -574,7 +516,7 @@
                 Feel free to reach out for inquiries, research discussions in AI/ML, or software development collaborations.
             </p>
             <a href="mailto:sagarga.inbox@gmail.com" class="email-box">
-                <svg viewBox="0 0 24 24" style="width:22px; height:22px; fill:var(--brand-primary);"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <svg class="icon-email" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 sagarga.inbox@gmail.com
             </a>
         </div>
